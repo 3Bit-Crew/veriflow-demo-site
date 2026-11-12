@@ -1,0 +1,350 @@
+:root {
+  --cream: #fbf6ee;
+  --paper: #fffdf9;
+  --ink: #2b1d14;
+  --muted: #6f5b4b;
+  --line: #ead9c4;
+  --crust: #b5562d;
+  --crust-dark: #96431f;
+  --gold: #e3a857;
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --serif: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  color-scheme: light;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--cream);
+  color: var(--ink);
+  font: 1rem/1.55 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--serif);
+  font-weight: 600;
+  line-height: 1.1;
+  margin: 0;
+  text-wrap: balance;
+}
+
+p {
+  margin: 0;
+}
+
+.wrap {
+  max-width: 60rem;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
+/* Header */
+.top {
+  border-bottom: 1px solid var(--line);
+  background: var(--paper);
+}
+
+.top__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  min-height: 4rem;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  color: var(--ink);
+  text-decoration: none;
+  font-family: var(--serif);
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.brand__mark {
+  width: 1.75rem;
+  height: 1.75rem;
+}
+
+.brand__mark circle {
+  fill: var(--crust);
+}
+
+.brand__mark path {
+  fill: var(--cream);
+}
+
+.top__hours {
+  color: var(--muted);
+  font-size: 0.875rem;
+}
+
+/* Hero: full width, the warm glow behind it is cropped at the edges */
+.hero {
+  position: relative;
+  overflow: hidden;
+  padding: 4.5rem 0 4rem;
+  background: linear-gradient(180deg, #f8ecdc 0%, var(--cream) 100%);
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  top: -10rem;
+  right: -8rem;
+  width: 28rem;
+  height: 28rem;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(227, 168, 87, 0.35), rgba(227, 168, 87, 0) 70%);
+  pointer-events: none;
+}
+
+.hero .wrap {
+  position: relative;
+}
+
+.eyebrow {
+  color: var(--crust);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+h1 {
+  margin-top: 0.75rem;
+  font-size: clamp(2.5rem, 9vw, 4.25rem);
+  letter-spacing: -0.02em;
+}
+
+.lede {
+  margin-top: 1rem;
+  max-width: 34rem;
+  color: var(--muted);
+  font-size: 1.125rem;
+}
+
+/* Signup form */
+.signup {
+  margin-top: 2rem;
+}
+
+.signup__label {
+  display: block;
+  margin-bottom: 0.4rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.signup__row {
+  display: flex;
+  gap: 0.5rem;
+  width: 26rem;
+}
+
+.signup input {
+  flex: 1 1 14rem;
+  min-width: 0;
+  height: 3rem;
+  padding: 0 1rem;
+  border: 1px solid #d9c3a8;
+  border-radius: 0.75rem;
+  background: var(--paper);
+  color: var(--ink);
+  font: inherit;
+  transition: border-color 150ms ease, box-shadow 150ms ease;
+}
+
+.signup input::placeholder {
+  color: #a8927e;
+}
+
+.signup input:focus-visible {
+  outline: none;
+  border-color: var(--crust);
+  box-shadow: 0 0 0 3px rgba(181, 86, 45, 0.18);
+}
+
+.signup button {
+  flex: 0 0 auto;
+  height: 3rem;
+  padding: 0 1.5rem;
+  border: 0;
+  border-radius: 0.75rem;
+  background: var(--crust);
+  color: #fff;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 160ms var(--ease-out), background-color 150ms ease;
+}
+
+.signup button:active {
+  transform: scale(0.97);
+}
+
+.signup button:focus-visible {
+  outline: 3px solid rgba(181, 86, 45, 0.35);
+  outline-offset: 2px;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .signup button:hover {
+    background: var(--crust-dark);
+  }
+}
+
+.signup__note {
+  margin-top: 0.6rem;
+  color: var(--muted);
+  font-size: 0.8125rem;
+}
+
+/* Thank-you message, shown in place of the form */
+.thanks {
+  margin-top: 2rem;
+  max-width: 30rem;
+  padding: 1.25rem 1.25rem 1.35rem;
+  border: 1px solid #cfe0c3;
+  border-left: 4px solid #5d8a46;
+  border-radius: 0.75rem;
+  background: #f3f8ee;
+  animation: rise 260ms var(--ease-out);
+}
+
+.thanks[hidden] {
+  display: none;
+}
+
+.thanks__title {
+  font-size: 1.375rem;
+  outline: none;
+}
+
+.thanks p {
+  margin-top: 0.4rem;
+  color: #3f5a32;
+  overflow-wrap: anywhere;
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+}
+
+/* Today's bakes */
+.bakes {
+  padding: 3.5rem 0 4rem;
+}
+
+.bakes h2 {
+  font-size: 1.75rem;
+}
+
+.bakes__list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+  gap: 1rem;
+  margin: 1.5rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.bake {
+  padding: 1.25rem;
+  border: 1px solid var(--line);
+  border-radius: 1rem;
+  background: var(--paper);
+}
+
+.bake__art {
+  width: 3.5rem;
+  height: 3.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.fill-crust {
+  fill: #c8783f;
+}
+
+.fill-gold {
+  fill: var(--gold);
+}
+
+.score {
+  fill: none;
+  stroke: #fbe6c8;
+  stroke-width: 2.5;
+  stroke-linecap: round;
+}
+
+.bake h3 {
+  font-size: 1.25rem;
+}
+
+.bake p {
+  margin-top: 0.35rem;
+  color: var(--muted);
+  font-size: 0.9375rem;
+}
+
+.bake .bake__price {
+  margin-top: 0.75rem;
+  color: var(--ink);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Footer */
+.foot {
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 0.875rem;
+}
+
+.foot__inner {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.5rem 1.5rem;
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+}
+
+@media (max-width: 30rem) {
+  .top__hours {
+    display: none;
+  }
+
+  .hero {
+    padding: 3rem 0 3rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .thanks {
+    animation-name: fade;
+  }
+
+  .signup button:active {
+    transform: none;
+  }
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+}
